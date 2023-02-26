@@ -1,9 +1,12 @@
+use rocket::{Build, Rocket};
+
 #[macro_use]
 extern crate rocket;
 
-mod routes;
+mod handlers;
+mod models;
 
 #[launch]
-fn rocket() -> _ {
-    rocket::build().mount("/articles", routes![routes::articles::list])
+fn rocket() -> Rocket<Build> {
+    rocket::build().mount("/articles", routes![handlers::article::get_list_handler])
 }
