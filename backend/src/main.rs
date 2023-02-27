@@ -1,31 +1,13 @@
 use std::error::Error;
 
 use rocket::http::Method;
-use rocket_cors::{AllowedHeaders, AllowedOrigins};
+use rocket_cors::AllowedOrigins;
 
 #[macro_use]
 extern crate rocket;
 
 mod handlers;
 mod models;
-
-// #[launch]
-// fn rocket() -> Rocket<Build> {
-//     let cors = CorsOptions::default()
-//         .allowed_origins(AllowedOrigins::all())
-//         .allowed_methods(
-//             vec![Method::Get, Method::Post, Method::Patch]
-//                 .into_iter()
-//                 .map(From::from)
-//                 .collect(),
-//         )
-//         .allow_credentials(true)
-//         .to_cors();
-
-//     rocket::build()
-//         .mount("/articles", routes![handlers::article::get_list_handler])
-//         .manage(cors)
-// }
 
 #[rocket::main]
 async fn main() -> Result<(), Box<dyn Error>> {
